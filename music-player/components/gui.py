@@ -5,10 +5,10 @@ from .player import MusicPlayer
 
 class MusicPlayerGUI:
     def __init__(self, relative_to_assets):
+        self.relative_to_assets = relative_to_assets
         self.window = self.create_window()
         self.canvas = self.create_canvas()
         self.music_player = MusicPlayer()
-        self.relative_to_assets = relative_to_assets
 
         self.volume_slider = self.create_volume_slider()
         self.buttons = self.create_buttons()
@@ -24,6 +24,9 @@ class MusicPlayerGUI:
         window.resizable(False, True)
         window.maxsize(width=650, height=750)
         window.minsize(width=650, height=200)
+        window.title("Music Player")
+        icon = PhotoImage(file=self.relative_to_assets("icon.png"))
+        window.wm_iconphoto(False, icon)
         return window
 
     def create_canvas(self):
